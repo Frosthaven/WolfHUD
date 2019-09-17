@@ -88,7 +88,7 @@
 		{ "hook_id" : "lib/managers/hudmanager", 								"script_path" : "lua/CustomWaypoints.lua" },
 		{ "hook_id" : "lib/units/vehicles/vehicledrivingext", 					"script_path" : "lua/CustomWaypoints.lua" },
 
-		{ "hook_id" : "lib/managers/group_ai_states/groupaistatebase", 			"script_path" : "lua/PacifiedCivs.lua" },
+		{ "hook_id" : "lib/managers/group_ai_states/groupaistatebase", 			"script_path" : "lua/BetterSuspicionIcons.lua" },
 
 		{ "hook_id" : "lib/managers/hudmanagerpd2", 							"script_path" : "lua/HUDChat.lua" },
 		{ "hook_id" : "lib/managers/hud/hudchat", 								"script_path" : "lua/HUDChat.lua" },

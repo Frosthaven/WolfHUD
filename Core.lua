@@ -150,7 +150,7 @@ if not _G.WolfHUD then
 				SHOW_PERCENTAGE							= true,
 				SHOW_PERCENTAGE_OUTLINE					= true,
 				SHOW_BARS								= true,
-				SHOW_PACIFIED_CIVILIANS					= true,
+				SHOW_BETTER_SUSPICION_ICONS				= true,
 				REMOVE_ANSWERED_PAGER_CONTOUR 			= true,
 			},
 			DrivingHUD = {
