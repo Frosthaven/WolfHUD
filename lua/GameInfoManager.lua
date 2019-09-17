@@ -5,11 +5,11 @@ local print_debug = function(text, ...)
 end
 
 if not local_assets_loaded and DB.create_entry then
-	for _, file in pairs(SystemFS:list(ModPath.."guis/textures/WolfhudEE")) do
+	for _, file in pairs(SystemFS:list(ModPath.."guis/textures/Wolfhud")) do
 		DB:create_entry(
             "texture",
-            "guis/textures/WolfhudEE/"..file:gsub(".texture", ""),
-            ModPath.."guis/textures/WolfhudEE/"..file
+            "guis/textures/Wolfhud/"..file:gsub(".texture", ""),
+            ModPath.."guis/textures/Wolfhud/"..file
         )
     end
 	local_assets_loaded = true

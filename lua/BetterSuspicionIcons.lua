@@ -3,15 +3,15 @@ local config = {}
 
 config.icons = {}
 
-config.icons.civilian_alerted = "guis/textures/WolfhudEE/civilian_alerted"
-config.icons.civilian_curious = "guis/textures/WolfhudEE/civilian_curious"
-config.icons.civilian_subdued = "guis/textures/WolfhudEE/civilian_subdued"
+config.icons.civilian_alerted = "guis/textures/Wolfhud/civilian_alerted"
+config.icons.civilian_curious = "guis/textures/Wolfhud/civilian_curious"
+config.icons.civilian_subdued = "guis/textures/Wolfhud/civilian_subdued"
 
-config.icons.guard_alerted = "guis/textures/WolfhudEE/guard_alerted"
-config.icons.guard_curious = "guis/textures/WolfhudEE/guard_curious"
+config.icons.guard_alerted = "guis/textures/Wolfhud/guard_alerted"
+config.icons.guard_curious = "guis/textures/Wolfhud/guard_curious"
 
-config.icons.camera_alerted = "guis/textures/WolfhudEE/camera_alerted"
-config.icons.camera_curious = "guis/textures/WolfhudEE/camera_curious"
+config.icons.camera_alerted = "guis/textures/Wolfhud/camera_alerted"
+config.icons.camera_curious = "guis/textures/Wolfhud/camera_curious"
 
 config.colors = {}
 config.colors.called  = Color(1,0,0)
