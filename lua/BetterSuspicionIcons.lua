@@ -23,7 +23,7 @@ config.colors.curious = Color(0,0.65,1)
 -- OVERRIDES *******************************************************************
 local _upd_criminal_suspicion_progress_orig = GroupAIStateBase._upd_criminal_suspicion_progress
 function GroupAIStateBase:_upd_criminal_suspicion_progress(...)
-	if self._ai_enabled then
+	if self._ai_enabled and WolfHUD:getSetting({"HUDSuspicion", "SHOW_BETTER_SUSPICION_ICONS"}, true) then
 		for obs_key, obs_susp_data in pairs(self._suspicion_hud_data or {}) do
 			local waypoint = managers.hud._hud.waypoints["susp1" .. tostring(obs_key)]
 
