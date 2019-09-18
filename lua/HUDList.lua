@@ -763,6 +763,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDListManager:_whisper_mode_change(event, key, status)
+		if HUDListManager.ListOptions.aggregate_enemies then
+			self:_set_aggregate_enemies()
+		end
 		--[[
 		for _, item in pairs(self:list("right_side_list"):item("stealth_list"):items()) do
 			item:set_active(item:get_count() > 0 and status)
@@ -1447,9 +1450,29 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	function HUDListManager:_set_show_enemies()
 		local list = self:list("right_side_list"):item("unit_count_list")
 		local all_types, all_ids = self:_get_units_by_category("enemies")
+		local non_security_ids = {}
 
 		if HUDListManager.ListOptions.aggregate_enemies then
-			self:_update_unit_count_list_items(list, "enemies", all_ids, HUDListManager.ListOptions.show_enemies)
+			if managers.groupai:state():whisper_mode() then
+				--STEALTH - DONT AGGREGATE SECURITY GUARDS
+				for unit_type, unit_ids in pairs(all_types) do
+					--update security guard counter
+					if unit_type == "security" then
+						self:_update_unit_count_list_items(list, unit_type, unit_ids, HUDListManager.ListOptions.show_enemies)
+					else
+						--add to non-security id list
+						for i=1,#unit_ids do
+							non_security_ids[#non_security_ids+1] = unit_ids[i]
+						end
+					end
+				end
+
+				--count all enemies other than security
+				self:_update_unit_count_list_items(list, "enemies", non_security_ids, HUDListManager.ListOptions.show_enemies)
+			else
+				--LOUD - AGGREGATE SECURITY GUARDS!
+				self:_update_unit_count_list_items(list, "enemies", all_ids, HUDListManager.ListOptions.show_enemies)
+			end
 		else
 			for unit_type, unit_ids in pairs(all_types) do
 				self:_update_unit_count_list_items(list, unit_type, unit_ids, HUDListManager.ListOptions.show_enemies)
@@ -1463,7 +1486,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		all_types.enemies = {}
 
 		for unit_type, unit_ids in pairs(all_types) do
-			list:unregister_item(unit_type)
+			if (managers.groupai:state():whisper_mode()) then
+				--STEALTH AGGREGATED- dont remove security
+				if (unit_type ~= "security") then
+					list:unregister_item(unit_type, true)
+				end
+			else
+				list:unregister_item(unit_type, true)
+			end
 		end
 
 		self:_set_show_enemies()
