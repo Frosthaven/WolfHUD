@@ -843,7 +843,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDListManager:_update_unit_count_aggregated_stealth(list, all_types)
-		log("AGGREGATE STEALTH UPDATE")
 		local non_security_ids = {}
 
 		--split security category from enemies category
@@ -857,9 +856,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 					non_security_ids[#non_security_ids+1] = unit_ids[i]
 				end
 			end
-		end		
+		end
 
-		log("NON SECURITY")
 		--update enemies with non-security entries
 		self:_update_unit_count_list_items(list, "enemies", non_security_ids, HUDListManager.ListOptions.show_enemies)
 	end
@@ -1484,7 +1482,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDListManager:_set_aggregate_enemies(instantUpdate)
-		log("SET_AGGREGATE_ENEMIES")
 		local list = self:list("right_side_list"):item("unit_count_list")
 		local all_types, all_ids = self:_get_units_by_category("enemies")
 		local instantUpdate = instantUpdate or false
