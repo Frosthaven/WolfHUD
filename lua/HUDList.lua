@@ -41,7 +41,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	local function get_icon_data(icon)
 		local texture = icon.texture
 		local texture_rect = icon.texture_rect
-
 		if icon.skills then
 			texture = "guis/textures/pd2/skilltree/icons_atlas"
 			local x, y = unpack(icon.skills)
@@ -72,8 +71,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		elseif icon.waypoints then
 			texture = "guis/textures/pd2/pd2_waypoints"
 			texture_rect = icon.waypoints
+		elseif icon.pager then
+			texture = "guis/textures/Wolfhud/pager"
+			texture_rect = { 0, 0, 80, 80 }
 		end
-
 		return texture, texture_rect
 	end
 
@@ -1563,9 +1564,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDListManager:_set_show_pager_count()
 		local list = self:list("right_side_list"):item("stealth_list")
-
 		if HUDListManager.ListOptions.show_pager_count then
-			list:register_item("PagerCount", HUDList.UsedPagersItem, { perks = {1, 4} }, { priority = 1 })
+			list:register_item("PagerCount", HUDList.UsedPagersItem, { pager = true }, { priority = 1 })
 		else
 			list:unregister_item("PagerCount", true)
 		end
@@ -2562,7 +2562,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDList.ExpansionIndicator:init(parent, name, ratio_w, ratio_h, params)
 		HUDList.ExpansionIndicator.super.init(self, parent, name, { align = "center", w = parent:panel():h() * (ratio_w or 1), h = parent:panel():h() * (ratio_h or 1) })
-
 		local icon = params.icon or {}
 		self._icon = self._panel:bitmap({
 			name = "icon_expansion",

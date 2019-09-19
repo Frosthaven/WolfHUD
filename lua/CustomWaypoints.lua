@@ -690,9 +690,8 @@ if RequiredScript == "lib/managers/hudmanager" then
 						type = "icon",
 						show = true,
 						show_offscreen = true,
-						texture = "guis/textures/pd2/specialization/icons_atlas",
-						texture_rect = { 1 * 64, 4 * 64, 64, 64 },
-						scale = 1.4,
+						texture = "guis/textures/Wolfhud/pager",
+						scale = 2,
 						on_minimap = true,
 					},
 					duration = {
