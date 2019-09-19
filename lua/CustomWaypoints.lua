@@ -691,7 +691,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 						show = true,
 						show_offscreen = true,
 						texture = "guis/textures/Wolfhud/pager",
-						scale = 2,
+						scale = 1.4,
 						on_minimap = true,
 					},
 					duration = {
