@@ -764,7 +764,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDListManager:_whisper_mode_change(event, key, status)
 		if HUDListManager.ListOptions.aggregate_enemies then
-			self:_set_aggregate_enemies()
+			self:_set_aggregate_enemies(true)
 		end
 		--[[
 		for _, item in pairs(self:list("right_side_list"):item("stealth_list"):items()) do
@@ -839,6 +839,28 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		else
 			list:unregister_item(id, true)
 		end
+	end
+
+	function HUDListManager:_update_unit_count_aggregated_stealth(list, all_types)
+		log("AGGREGATE STEALTH UPDATE")
+		local non_security_ids = {}
+
+		--split security category from enemies category
+		for unit_type, unit_ids in pairs(all_types) do
+			if unit_type == "security" then
+				--update security counter
+				self:_update_unit_count_list_items(list, "security", unit_ids, HUDListManager.ListOptions.show_enemies)
+			else
+				--save non security entries 
+				for i=1,#unit_ids do
+					non_security_ids[#non_security_ids+1] = unit_ids[i]
+				end
+			end
+		end		
+
+		log("NON SECURITY")
+		--update enemies with non-security entries
+		self:_update_unit_count_list_items(list, "enemies", non_security_ids, HUDListManager.ListOptions.show_enemies)
 	end
 
 	function HUDListManager:_update_deployable_list_items(type, enabled)
@@ -1450,49 +1472,30 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	function HUDListManager:_set_show_enemies()
 		local list = self:list("right_side_list"):item("unit_count_list")
 		local all_types, all_ids = self:_get_units_by_category("enemies")
-		local non_security_ids = {}
 
 		if HUDListManager.ListOptions.aggregate_enemies then
 			if managers.groupai:state():whisper_mode() then
-				--STEALTH - DONT AGGREGATE SECURITY GUARDS
-				for unit_type, unit_ids in pairs(all_types) do
-					--update security guard counter
-					if unit_type == "security" then
-						self:_update_unit_count_list_items(list, unit_type, unit_ids, HUDListManager.ListOptions.show_enemies)
-					else
-						--add to non-security id list
-						for i=1,#unit_ids do
-							non_security_ids[#non_security_ids+1] = unit_ids[i]
-						end
-					end
-				end
-
-				--count all enemies other than security
-				self:_update_unit_count_list_items(list, "enemies", non_security_ids, HUDListManager.ListOptions.show_enemies)
+				self:_update_unit_count_aggregated_stealth(list, all_types)
 			else
-				--LOUD - AGGREGATE SECURITY GUARDS!
 				self:_update_unit_count_list_items(list, "enemies", all_ids, HUDListManager.ListOptions.show_enemies)
-			end
-		else
-			for unit_type, unit_ids in pairs(all_types) do
-				self:_update_unit_count_list_items(list, unit_type, unit_ids, HUDListManager.ListOptions.show_enemies)
 			end
 		end
 	end
 
-	function HUDListManager:_set_aggregate_enemies()
+	function HUDListManager:_set_aggregate_enemies(instantUpdate)
+		log("SET_AGGREGATE_ENEMIES")
 		local list = self:list("right_side_list"):item("unit_count_list")
 		local all_types, all_ids = self:_get_units_by_category("enemies")
+		local instantUpdate = instantUpdate or false
 		all_types.enemies = {}
 
 		for unit_type, unit_ids in pairs(all_types) do
 			if (managers.groupai:state():whisper_mode()) then
-				--STEALTH AGGREGATED- dont remove security
 				if (unit_type ~= "security") then
-					list:unregister_item(unit_type, true)
+					list:unregister_item(unit_type, instantUpdate)
 				end
 			else
-				list:unregister_item(unit_type, true)
+				list:unregister_item(unit_type, instantUpdate)
 			end
 		end
 
