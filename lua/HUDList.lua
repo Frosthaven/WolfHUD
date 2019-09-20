@@ -1478,6 +1478,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			else
 				self:_update_unit_count_list_items(list, "enemies", all_ids, HUDListManager.ListOptions.show_enemies)
 			end
+		else
+			for unit_type, unit_ids in pairs(all_types) do
+				self:_update_unit_count_list_items(list, unit_type, unit_ids, HUDListManager.ListOptions.show_enemies)
+			end
 		end
 	end
 
