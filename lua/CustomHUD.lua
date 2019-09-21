@@ -1372,7 +1372,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 
 		self._icon = self._panel:bitmap({
 			name = "icon",
-			texture = "guis/textures/pd2/cn_miniskull",
+			texture = "guis/textures/pd2/risklevel_blackscreen",
 			color = Color.white,
 			h = height,
 			w = height,
