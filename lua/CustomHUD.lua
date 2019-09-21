@@ -1844,7 +1844,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 
 		self._stamina_radial = self._panel:bitmap({
 			name = "radial_shield",
-			texture = "guis/textures/pd2/hud_radial_rim",
+			texture = "guis/textures/Wolfhud/radial_stamina",
 			render_template = "VertexColorTexturedRadial",
 			blend_mode = "add",
 			color = Color(1, 0, 0),
