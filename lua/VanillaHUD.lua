@@ -154,7 +154,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	function HUDTeammate:set_stamina_meter_visibility(value)
 		if self._stamina_bar and self._stamina_bar:visible() ~= value then
 			self._stamina_bar:set_visible(value)
-			self._stamina_line:set_visible(value)
+			--self._stamina_line:set_visible(value)
 		end
 	end
 
