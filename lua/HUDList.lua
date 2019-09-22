@@ -664,7 +664,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		--Pagers
 		local pager_list = list:register_item("pagers", HUDList.HorizontalList, { align = "top", w = list_width, h = 40 * scale, left_to_right = true, item_margin = 5, priority = 2, recheck_interval = 1 })
 		pager_list:set_static_item(HUDList.LeftListIcon, 1, 1, {
-			{ perks = {1, 4}, color = HUDListManager.ListOptions.list_color },
+			{ pager = true, color = HUDListManager.ListOptions.list_color },
 		})
 
 		--ECMs
