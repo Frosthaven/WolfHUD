@@ -1372,7 +1372,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 
 		self._icon = self._panel:bitmap({
 			name = "icon",
-			texture = "guis/textures/pd2/cn_miniskull",
+			texture = "guis/textures/pd2/risklevel_blackscreen",
 			color = Color.white,
 			h = height,
 			w = height,
@@ -1844,7 +1844,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 
 		self._stamina_radial = self._panel:bitmap({
 			name = "radial_shield",
-			texture = "guis/textures/pd2/hud_radial_rim",
+			texture = "guis/textures/Wolfhud/radial_stamina",
 			render_template = "VertexColorTexturedRadial",
 			blend_mode = "add",
 			color = Color(1, 0, 0),

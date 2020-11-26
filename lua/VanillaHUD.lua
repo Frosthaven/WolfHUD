@@ -165,7 +165,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		local radial_health_panel = self._panel:child("player"):child("radial_health_panel")
 		self._stamina_bar = radial_health_panel:bitmap({
 			name = "radial_stamina",
-			texture = "guis/textures/pd2/hud_radial_rim",
+			texture = "guis/textures/Wolfhud/radial_stamina",
 			render_template = "VertexColorTexturedRadial",
 			blend_mode = "add",
 			alpha = 1,
@@ -177,6 +177,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		self._stamina_bar:set_color(Color(1, 1, 0, 0))
 		self._stamina_bar:set_center(radial_health_panel:child("radial_health"):center())
 
+		--[[
 		self._stamina_line = radial_health_panel:rect({
 			color = Color.red:with_alpha(0.4),
 			w = radial_health_panel:w() * 0.05,
@@ -185,12 +186,14 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 			visible = WolfHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true)
 		})
 		self._stamina_line:set_center(radial_health_panel:child("radial_health"):center())
+		--]]
 	end
 
 	function HUDTeammate:set_max_stamina(value)
 		if not self._max_stamina or self._max_stamina ~= value then
 			self._max_stamina = value
 			local w = self._stamina_bar:w()
+			--[[
 			local threshold = tweak_data.player.movement_state.stamina.MIN_STAMINA_THRESHOLD
 			local angle = 360 * (threshold/self._max_stamina) - 90
 			local x = 0.48 * w * math.cos(angle) + w * 0.5 + self._stamina_bar:x()
@@ -198,6 +201,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 			self._stamina_line:set_x(x)
 			self._stamina_line:set_y(y)
 			self._stamina_line:set_rotation(angle)
+			--]]
 		end
 	end
 
@@ -209,7 +213,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	function HUDTeammate:set_stamina_meter_visibility(value)
 		if self._stamina_bar and self._stamina_bar:visible() ~= value then
 			self._stamina_bar:set_visible(value)
-			self._stamina_line:set_visible(value)
+			--self._stamina_line:set_visible(value)
 		end
 	end
 

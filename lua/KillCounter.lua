@@ -244,10 +244,9 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 			local killcount_color = WolfHUD:getColorSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "yellow")
 
 			self._kill_icon = self._kills_panel:bitmap({
-				texture = "guis/textures/pd2/cn_miniskull",
-				w = self._kills_panel:h() * 0.75,
+				texture = "guis/textures/pd2/risklevel_blackscreen",
+				w = self._kills_panel:h(),
 				h = self._kills_panel:h(),
-				texture_rect = { 0, 0, 12, 16 },
 				alpha = 1,
 				blend_mode = "normal",
 				layer = 0,
@@ -288,7 +287,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 
 			self._accuracy_icon = self._accuracy_panel:bitmap({
 				texture = "guis/textures/pd2/pd2_waypoints",
-				w = self._accuracy_panel:h() * 0.75,
+				w = self._accuracy_panel:h(),
 				h = self._accuracy_panel:h(),
 				texture_rect = { 96, 0, 32, 32 },
 				alpha = 1,
