@@ -81,7 +81,7 @@
 
 				<group :hook_id="group_ai_states/groupaistatebase">
 					<post :script_path="GameInfoManager.lua"/>
-					<post :script_path="PacifiedCivs.lua"/>
+					<post :script_path="BetterSuspicionIcons.lua"/>
 				</group>
 
 				<group :hook_id="hud/">
