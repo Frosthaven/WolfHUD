@@ -14,12 +14,6 @@
 	],
 	"updates" : [
 		{
-			"identifier" : "wolfhud",
-			"host" : {
-				"meta" : "https://github.com/Kamikaze94/WolfHUD/raw/autoupdate/meta.json"
-			}
-		},
-		{
 			"identifier" : "fed_inv",
 			"host" : {
 				"meta" : "https://github.com/Kamikaze94/WolfHUD/raw/autoupdate/meta.json"
