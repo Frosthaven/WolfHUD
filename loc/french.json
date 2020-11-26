@@ -1,6 +1,6 @@
 {
 	"menu_jowi" : "Wick",
-	"hud_int_hold_grab_the_bag" : "MAINTENEZ $BTN_INTERACT POUR PRENDRE $BAG",
+	"hud_int_hold_grab_the_bag" : "MAINTENEZ $INTERACT POUR PRENDRE $BAG",
 
 	"wolfhud_dialog_force_start_title" : "Forcer le début de la partie?",
 	"wolfhud_dialog_force_start_desc" : "Êtes-vous sûr de vouloir forcer le début de la partie??\n\nN'utilisez cette option que pour les lobby buggés, ou si un autre joueur est absent.\nAssurez-vous que tout le monde ait eu le temps de choisir son équipement s'il vous plaît.\n\nMerci! :)",
@@ -11,6 +11,11 @@
 	"wolfhud_dialog_rename_inv_tab" : "Renommer cette page d'inventaire",
 	"wolfhud_dialog_rename_inv_tab_desc" : "Entrez un nom pour cette page de votre inventaire.",
 	"wolfhud_dialog_save" : "Sauvegarder",
+	"wolfhud_dialog_requires_superblt_title" : "[WolfHUD] No SuperBLT detected!",
+	"wolfhud_dialog_requires_superblt_desc_long" : "WolfHUD requires SuperBLT in order to work.\nSuperBLT is a fork of the BLT mod-loading hook for PAYDAY 2, with a number of major improvements. \nIt is fully backwards-compatable with regular BLT mods.\n\nYou can find further information and installation instructions here: \n$URL",
+	"wolfhud_dialog_requires_superblt_desc_short" : "WolfHUD is no longer compatable with regular BLT.\nPlease update to SuperBLT to continue using it.\nYou can find SuperBLT at '$URL'.",
+	"wolfhud_dialog_update_install_folder_title" : "[WolfHUD] Auto-Updates compromised!",
+	"wolfhud_dialog_update_install_folder_desc" : "For automatic updates, WolfHUD's install folder \nneeds to be named 'mods/WolfHUD-master/'. \n(Currently its 'mods/$FOLDER/')",
 	"woldhud_notification_disabled_override_title" : "WolfHUD: $NAME est désactivé.",
 	"woldhud_notification_disabled_override_desc" : "Si vous changez d'avis, cliquez ici.",
 	"woldhud_notification_restart_override_title" : "WolfHUD: $NAME est prêt à être installé.",
@@ -104,6 +109,8 @@
 	"wolfhud_hudlist_loot_shoes" : "Chaussures",
 	"wolfhud_hudlist_loot_toy" : "Jouet",
 	"wolfhud_hudlist_loot_vr" : "Casque VR",
+	"wolfhud_hudlist_loot_egg" : "Egg",
+	"wolfhud_hudlist_loot_treasure" : "Treasure",
 	"wolfhud_hudlist_showcase" : "Vitrine",
 
 	"wolfhud_hudlist_buff_basic" : "Basique",
@@ -128,12 +135,15 @@
 	"wolfhud_tabstats_melee_kills" : "Victimes à la mêlée:",
 	"wolfhud_tabstats_explosion_kills" : "Victimes par explosion:",
 	"wolfhud_tabstats_nonspecial_kills" : "Ennemis lambda tués:",
+	"wolfhud_tabstats_total_kills" : "Total Kills:",
 	"wolfhud_tabstats_total_revives" : "Total des réanimations (Joueur/IA):",
 	"wolfhud_tabstats_alltime_stat" : "Stats générales:",
 
 	"wolfhud_enemy_civilian" : "Civil",
+	"wolfhud_enemy_mariachi" : "Mariachi Band Member",
 	"wolfhud_enemy_gangster" : "Gangster",
 	"wolfhud_enemy_biker" : "Motard",
+	"wolfhud_enemy_bolivian_security_mex" : "Coyopa Security",
 	"wolfhud_enemy_bolivian_security" : "Garde de Sosa",
 	"wolfhud_enemy_bolivian_thug" : "Malfra de Sosa",
 	"wolfhud_enemy_mobster" : "Gangster russe",
@@ -198,6 +208,9 @@
 	"wolfhud_enemy_medic_summers" : "Sergent Doc",
 	"wolfhud_enemy_spring" : "Capitaine Spring",
 	"wolfhud_enemy_fbi_vet" : "Vétéran",
+
+	"wolfhud_enemy_deathvox_light" : "ZEAL Unit",
+	"wolfhud_enemy_deathvox_heavy" : "Heavy ZEAL",
 
 	"wolfhud_multiselect_all" : "Tout",
 	"wolfhud_multiselect_none" : "Aucun",
@@ -264,6 +277,8 @@
 	"wolfhud_inventory_names_desc" : "Affiche le nom des armes, de l'armure, de l'équipement ... équipés dans l'emplacement d'inventaire.",
 	"wolfhud_skill_names_title" : "Afficher le nom des compétences",
 	"wolfhud_skill_names_desc" : "Toujours afficher le nom des compétences dans l'arborescence des compétences.",
+	"wolfhud_show_contractor_job_heat_title":"Show Contractor Heat",
+	"wolfhud_show_contractor_job_heat_desc":"Shows job heat in the contract broker list.",
 	"wolfhud_show_mini_icons_title" : "Toujours afficher les petites icônes",
 	"wolfhud_show_mini_icons_desc" : "Affiche les petites icônes de modifications d'armes sur toutes les armes, et non uniquement sur celles sélectionnées.",
 	"wolfhud_no_slowmotion_title" : "Désactiver le Slow Motion",
@@ -469,6 +484,8 @@
 	"wolfhud_hudlist_progress_alpha_right_desc" : "Définir l'opacité pour les éléments de la liste de droite.",
 	"wolfhud_hudlist_progress_alpha_buff_title" : "Opacité liste bonus",
 	"wolfhud_hudlist_progress_alpha_buff_desc" : "Définir l'opacité pour les éléments de la liste de bonus.",
+	"wolfhud_hudlist_timers_in_seconds_title" : "Timers in seconds",
+	"wolfhud_hudlist_timers_in_seconds_desc" : "Always display timers in seconds.",
 
 	"wolfhud_infopanels_left_options_name" : "Paramètres de la liste de gauche",
 	"wolfhud_infopanels_left_options_help" : "Paramètres des éléments de la liste de gauche.",
@@ -890,6 +907,8 @@
 	"wolfhud_equipment_shaped_charge_disabled_stealth_desc" : "Si cochée, vous aurez à appuyer deux fois sur votre touche d'action pour placer des charges creuses lors d'un braquage discret. \nCela a pour but d'éviter les accidents.",
 	"wolfhud_equipment_keycard_doors_disabled_title" : "Suppression portes à cartes d'accès",
 	"wolfhud_equipment_keycard_doors_disabled_desc" : "Si cochée, vous aurez à appuyer deux fois sur votre touche d'action pour fermer une porte à carte d'accès, dans le jour 2 de l'Évasion d'Hoxton. \nCela a pour but d'éviter les accidents.",
+	"wolfhud_override_fedinv" : "Enable Federal Inventory",
+	"wolfhud_override_fedinv_desc" : "Enable colorized Inventory icons.\nRequires game restart to fully take effect.",
 
 	"wolfhud_gadget_options_name" : "Paramètres des gadgets d'armes",
 	"wolfhud_gadget_options_help" : "Définit la couleur des lasers.",

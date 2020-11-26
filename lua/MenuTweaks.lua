@@ -1,5 +1,5 @@
 if string.lower(RequiredScript) == "lib/managers/menumanager" then
-	function MenuCallbackHandler:is_dlc_latest_locked(...) return false end		--Hide DLC ad in the main menu
+	function MenuCallbackHandler:get_latest_dlc_locked(...) return false end		--Hide DLC ad in the main menu
 
 	local modify_controls_original = MenuOptionInitiator.modify_controls
 	function MenuOptionInitiator:modify_controls(...)
@@ -317,10 +317,11 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 	function BlackMarketGui:mouse_clicked(...)
 		BlackMarketGui_mouse_clicked_original(self, ...)
 
-		if not self._enabled then
+		if not self._enabled or alive(self._context_panel) then
 			return
 		end
 
+		self._mouse_click = self._mouse_click or {}
 		self._mouse_click[self._mouse_click_index].selected_tab = self._selected
 	end
 

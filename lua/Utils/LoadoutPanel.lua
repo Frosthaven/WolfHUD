@@ -165,6 +165,7 @@ LoadoutPanel.NAME_TO_CLASS = {
 	melee_weapon			= { class = "LoadoutImageItem", 	 	params = { margin = 5 } },
 	grenade 				= { class = "LoadoutImageItem", 	 	params = { margin = 5 } },
 	mask					= { class = "LoadoutMaskItem", 		 	params = { margin = 5 } },
+	player_style			= { class = "LoadoutImageItem", 		params = { margin = 5 } },
 	armor 					= { class = "LoadoutImageItem", 	 	params = { margin = 5 } },
 	deployable 				= { class = "LoadoutDeployableItem", 	params = { margin = 5 } },
 	secondary_deployable 	= { class = "LoadoutDeployableItem", 	params = { margin = 5 } },
@@ -613,6 +614,7 @@ function LoadoutImageItem:get_outfit_data(type, id)
 		weapon = tweak_data.weapon,
 		melee_weapon = tweak_data.blackmarket.melee_weapons,
 		mask = tweak_data.blackmarket.masks,
+		player_style = tweak_data.blackmarket.player_styles,
 		armor = tweak_data.blackmarket.armors,
 		grenade = tweak_data.blackmarket.projectiles,
 		deployables = tweak_data.blackmarket.deployables,
@@ -622,6 +624,7 @@ function LoadoutImageItem:get_outfit_data(type, id)
 		weapon = "textures/pd2/blackmarket/icons/weapons/",
 		melee_weapon = "textures/pd2/blackmarket/icons/melee_weapons/",
 		mask = "textures/pd2/blackmarket/icons/masks/",
+		player_style = "textures/pd2/blackmarket/icons/player_styles/",
 		armor = "textures/pd2/blackmarket/icons/armors/",
 		grenade = "textures/pd2/blackmarket/icons/grenades/",
 		deployables = "textures/pd2/blackmarket/icons/deployables/",
@@ -777,7 +780,7 @@ function LoadoutPingItem:update(t, dt)
 			end
 			self._next_update_t = (t + 1)
 
-				self:arrange()
+			self:arrange()
 		end
 	end
 end
@@ -1023,7 +1026,7 @@ function LoadoutWeaponItem:arrange()
 		self._rarity:set_center_y(self._panel:h() / 2 + ((self._text:visible() and self._text:h() or 0) * 0.5))
 	end
 
-		for i, perk in ipairs(self._perks or {}) do
+	for i, perk in ipairs(self._perks or {}) do
 		if alive(perk) and perk:visible() then
 			local size = math.min(self._panel:h() / 4, self._panel:w() / #self._perks, 16)
 			perk:set_w(size)
@@ -1056,19 +1059,21 @@ function LoadoutWeaponItem:set_rarity(texture)
 end
 
 function LoadoutWeaponItem:update_weapon(outfit)
-	local weapon_id = outfit[self._name].cosmetics and outfit[self._name].cosmetics.id or managers.weapon_factory:get_weapon_id_by_factory_id(outfit[self._name].factory_id)
+	local weapon_id = managers.weapon_factory:get_weapon_id_by_factory_id(outfit[self._name].factory_id)
 	if weapon_id then
 		self:set_enabled("outfit", true)
 		if self._loadout ~= weapon_id then
 			self._loadout = weapon_id
-			local skinned = tweak_data.blackmarket.weapon_skins[self._loadout] and true
-			local texture, name, rarity = self:get_outfit_data(skinned and "weapon_skin" or "weapon", self._loadout)
+			local skin_id = outfit[self._name].cosmetics and outfit[self._name].cosmetics.id
+			local skin_tweak = tweak_data.blackmarket.weapon_skins[skin_id]
+			local weapon_skin = skin_tweak and not skin_tweak.is_a_color_skin and (table.contains(skin_tweak.weapon_ids or {}, weapon_id) or (skin_tweak.weapon_id and skin_tweak.weapon_id == weapon_id) ~= (skin_tweak.use_blacklist or false)) or false
+			local texture, name, rarity = self:get_outfit_data(weapon_skin and "weapon_skin" or "weapon", weapon_skin and skin_id or weapon_id)
 
 			self:set_text(name)
 			self:set_image(texture)
 			self:set_rarity(rarity)
 
-				return true
+			return true
 		end
 	else
 		self:set_enabled("outfit", false)
@@ -1087,7 +1092,7 @@ function LoadoutWeaponItem:update_perks(outfit)
 			stats = factory[part_id] and factory[part_id].stats or false
 			custom_stats = factory[part_id] and factory[part_id].custom_stats or false
 			has_stat_boost = stats and 1 < table.size(stats) and true or false
-			has_team_boost = custom_stats and (custom_stats.exp_multiplier or custom_stats.money_multiplier and true) or false
+			has_team_boost = custom_stats and (custom_stats.exp_multiplier or custom_stats.money_multiplier) and true or false
 			if has_stat_boost then
 				perks.bonus_stats = stats
 			end

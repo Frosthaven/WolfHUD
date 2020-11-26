@@ -56,6 +56,7 @@ function WolfHUDTweakData:init()
 		melee_weapon			-> The equipped melee weapon
 		grenade 				-> The eqipped throwable
 		mask					-> The mask worn
+		player_style			-> The suit worn
 		armor 					-> The armor worn
 		deployable 				-> The equipped deployable
 		secondary_deployable 	-> The eqipped secondary deployable (in case of Jack of all trades)
@@ -123,14 +124,18 @@ function WolfHUDTweakData:init()
 	self.CHARACTER_NAMES = {
 		[ "civilian" ] 							= { default = "wolfhud_enemy_civilian" },
 		[ "civilian_female" ] 					= { default = "wolfhud_enemy_civilian" },
+		[ "civilian_mariachi" ] 				= { default = "wolfhud_enemy_civilian" },
 		[ "captain" ] 							= { default = "wolfhud_enemy_civilian" },
 		[ "gangster" ] 							= { default = "wolfhud_enemy_gangster" },
 		[ "biker" ] 							= { default = "wolfhud_enemy_biker" },
 		[ "biker_escape" ] 						= { default = "wolfhud_enemy_biker" },
 		[ "bolivian_indoors" ]					= { default = "wolfhud_enemy_bolivian_security" },
+		[ "bolivian_indoors_mex" ]				= { default = "wolfhud_enemy_bolivian_security_mex" },
 		[ "bolivian" ]							= { default = "wolfhud_enemy_bolivian_thug" },
 		[ "mobster" ] 							= { default = "wolfhud_enemy_mobster" },
 		[ "security" ] 							= { default = "wolfhud_enemy_security" },
+		[ "security_mex" ] 						= { default = "wolfhud_enemy_security" },
+		[ "security_mex_no_pager" ] 			= { default = "wolfhud_enemy_security" },
 		[ "security_undominatable" ] 			= { default = "wolfhud_enemy_security" },
 		[ "mute_security_undominatable" ]		= { default = "wolfhud_enemy_security" },
 		[ "gensec" ] 							= { default = "wolfhud_enemy_gensec" },
@@ -178,6 +183,7 @@ function WolfHUDTweakData:init()
 		[ "boris" ]								= { default = "wolfhud_enemy_boris" },
 		[ "spa_vip" ]							= { default = "wolfhud_enemy_spa_vip" },
 		[ "spa_vip_hurt" ]						= { default = "wolfhud_enemy_spa_vip_hurt" },
+		[ "escort_criminal" ] 					= { default = "Please edit later..." },
 		[ "old_hoxton_mission" ] 				= { default = "wolfhud_enemy_locke_mission", hox_1 = "wolfhud_enemy_old_hoxton_mission", hox_2 = "wolfhud_enemy_old_hoxton_mission", rvd1 = "wolfhud_enemy_reservoirdogs", rvd2 = "wolfhud_enemy_reservoirdogs" },
 		[ "hector_boss" ] 						= { default = "wolfhud_enemy_hector_boss" },
 		[ "hector_boss_no_armor" ] 				= { default = "wolfhud_enemy_hector_boss_no_armor" },
@@ -208,6 +214,33 @@ function WolfHUDTweakData:init()
 		[ "ecp_male" ] 							= { default = "menu_ecp_male" },
 		[ "ecp_female" ] 						= { default = "menu_ecp_female" },
 		[ "joy" ] 								= { default = "menu_joy" },
+		
+		--Restoration Overhaul Enemies
+		["boom"] 								= { default = "wolfhud_enemy_boom" },
+		["omnia_lpf"] 							= { default = "wolfhud_enemy_omnia_lpf" },
+		["summers"] 							= { default = "wolfhud_enemy_summers" },
+		["boom_summers"] 						= { default = "wolfhud_enemy_boom_summers" },
+		["taser_summers"] 						= { default = "wolfhud_enemy_taser_summers" },
+		["medic_summers"] 						= { default = "wolfhud_enemy_medic_summers" },
+		["spring"] 								= { default = "wolfhud_enemy_spring" },
+		["fbi_vet"] 							= { default = "wolfhud_enemy_fbi_vet" },
+
+		--Crackdown Enemies
+		["deathvox_lightar"] 					= { default = "wolfhud_enemy_deathvox_light" },
+		["deathvox_heavyar"] 					= { default = "wolfhud_enemy_deathvox_heavy" },
+		["deathvox_lightshot"] 					= { default = "wolfhud_enemy_deathvox_light" },
+		["deathvox_heavyshot"] 					= { default = "wolfhud_enemy_deathvox_heavy" },
+		["deathvox_greendozer"] 				= { default = "wolfhud_enemy_tank" },
+		["deathvox_blackdozer"] 				= { default = "wolfhud_enemy_tank" },
+		["deathvox_lmgdozer"] 					= { default = "wolfhud_enemy_tank" },
+		["deathvox_medicdozer"] 				= { default = "wolfhud_enemy_tank_medic" },
+		["deathvox_cloaker"] 					= { default = "wolfhud_enemy_spooc" },
+		["deathvox_taser"] 						= { default = "wolfhud_enemy_taser" },
+		["deathvox_shield"] 					= { default = "wolfhud_enemy_shield" },
+		["deathvox_sniper"] 					= { default = "wolfhud_enemy_sniper" },
+		["deathvox_medic"] 						= { default = "wolfhud_enemy_medic" },
+		["deathvox_grenadier"] 					= { default = "wolfhud_enemy_boom" },
+		["deathvox_guard"] 						= { default = "wolfhud_enemy_security" },
 	}
 
 	self:post_init()

@@ -1,6 +1,6 @@
 {
 	"menu_jowi" : "윅",
-	"hud_int_hold_grab_the_bag" : "$BTN_INTERACT 키 를 눌러서 $BAG 를(을) 들기",
+	"hud_int_hold_grab_the_bag" : "$INTERACT 키 를 눌러서 $BAG 를(을) 들기",
 
 	"wolfhud_dialog_force_start_title" : "강제로 게임을 시작할까요?",
 	"wolfhud_dialog_force_start_desc" : "정말로 강제로 게임을 시작하시겠습니까?\n이 기능을 잠수 플레이어, 버그걸린 로비일때만 사용해주세요.\n그리고 모든 플레이어가 무기를 바꿀 시간도 주시구요.\n\n감사합니다 :)",
@@ -11,6 +11,11 @@
 	"wolfhud_dialog_rename_inv_tab" : "인벤토리 이름 바꾸기",
 	"wolfhud_dialog_rename_inv_tab_desc" : "이 페이지의 인벤토리 이름을 정해주세요.",
 	"wolfhud_dialog_save" : "저장",
+	"wolfhud_dialog_requires_superblt_title" : "[WolfHUD] No SuperBLT detected!",
+	"wolfhud_dialog_requires_superblt_desc_long" : "WolfHUD requires SuperBLT in order to work.\nSuperBLT is a fork of the BLT mod-loading hook for PAYDAY 2, with a number of major improvements. \nIt is fully backwards-compatable with regular BLT mods.\n\nYou can find further information and installation instructions here: \n$URL",
+	"wolfhud_dialog_requires_superblt_desc_short" : "WolfHUD is no longer compatable with regular BLT.\nPlease update to SuperBLT to continue using it.\nYou can find SuperBLT at '$URL'.",
+	"wolfhud_dialog_update_install_folder_title" : "[WolfHUD] Auto-Updates compromised!",
+	"wolfhud_dialog_update_install_folder_desc" : "For automatic updates, WolfHUD's install folder \nneeds to be named 'mods/WolfHUD-master/'. \n(Currently its 'mods/$FOLDER/')",
 	"woldhud_notification_disabled_override_title" : "WolfHUD: $NAME 는(은) 현재 비활성화 되있습니다.",
 	"woldhud_notification_disabled_override_desc" : "설정을 원하신다면 여기를 눌러주세요.",
 	"woldhud_notification_restart_override_title" : "WolfHUD: $NAME 는(은) 설치가 가능합니다.",
@@ -104,6 +109,8 @@
 	"wolfhud_hudlist_loot_shoes" : "신발",
 	"wolfhud_hudlist_loot_toy" : "장난감",
 	"wolfhud_hudlist_loot_vr" : "헤드셋",
+	"wolfhud_hudlist_loot_egg" : "Egg",
+	"wolfhud_hudlist_loot_treasure" : "Treasure",
 	"wolfhud_hudlist_showcase" : "Showcase",
 
 	"wolfhud_hudlist_buff_basic" : "베이직",
@@ -128,12 +135,15 @@
 	"wolfhud_tabstats_melee_kills" : "근접 사살 수:",
 	"wolfhud_tabstats_explosion_kills" : "폭팔 사살 수:",
 	"wolfhud_tabstats_nonspecial_kills" : "일반경찰 사살 수:",
+	"wolfhud_tabstats_total_kills" : "Total Kills:",
 	"wolfhud_tabstats_total_revives" : "총 살려낸 팀원 (플레이어/봇):",
 	"wolfhud_tabstats_alltime_stat" : "합계:",
 
 	"wolfhud_enemy_civilian" : "시민",
+	"wolfhud_enemy_mariachi" : "Mariachi Band Member",
 	"wolfhud_enemy_gangster" : "갱스터",
 	"wolfhud_enemy_biker" : "바이커",
+	"wolfhud_enemy_bolivian_security_mex" : "Coyopa Security",
 	"wolfhud_enemy_bolivian_security" : "소사 경비원",
 	"wolfhud_enemy_bolivian_thug" : "소사 암살자",
 	"wolfhud_enemy_mobster" : "러시안 몹스터",
@@ -200,6 +210,9 @@
 	"wolfhud_enemy_spring" : "캡틴 스프링",
 	"wolfhud_enemy_fbi_vet" : "베테랑 경찰",
 
+	"wolfhud_enemy_deathvox_light" : "ZEAL Unit",
+	"wolfhud_enemy_deathvox_heavy" : "Heavy ZEAL",
+
 	"wolfhud_multiselect_all" : "모두",
 	"wolfhud_multiselect_none" : "없음",
 	"wolfhud_multiselect_disabled" : "비활성화",
@@ -265,6 +278,8 @@
 	"wolfhud_inventory_names_desc" : "인벤토리 아이템 박스 안에 무기이름, 아이템이름 등을 표시합니다.",
 	"wolfhud_skill_names_title" : "스킬 이름 표시",
 	"wolfhud_skill_names_desc" : "항상 스킬창에서 스킬 이름이 표시됩니다.\n(기본적으로 마우스 커서를 올려야 스킬 이름이 표시됩니다)",
+	"wolfhud_show_contractor_job_heat_title":"Show Contractor Heat",
+	"wolfhud_show_contractor_job_heat_desc":"Shows job heat in the contract broker list.",
 	"wolfhud_show_mini_icons_title" : "작은 아이콘 표시",
 	"wolfhud_show_mini_icons_desc" : "개조된 무기 모드를 항상 박스 안에 표시합니다.\n(기본적으로 선택해야 모드가 표시됩니다)",
 	"wolfhud_no_slowmotion_title" : "슬로우 모션 비활성화",
@@ -470,6 +485,8 @@
 	"wolfhud_hudlist_progress_alpha_right_desc" : "Alpha value for the progress bars on right list items.",
 	"wolfhud_hudlist_progress_alpha_buff_title" : "Buff Progress Alpha",
 	"wolfhud_hudlist_progress_alpha_buff_desc" : "Alpha value for the progress bars on buff list items.",
+	"wolfhud_hudlist_timers_in_seconds_title" : "Timers in seconds",
+	"wolfhud_hudlist_timers_in_seconds_desc" : "Always display timers in seconds.",
 
 	"wolfhud_infopanels_left_options_name" : "왼쪽 리스트 옵션",
 	"wolfhud_infopanels_left_options_help" : "왼쪽에 표시될 리스트들을 설정합니다.",
@@ -892,6 +909,8 @@
 	"wolfhud_equipment_shaped_charge_disabled_stealth_desc" : "When checked, you need to doubletap to deploy shaped charges in stealth. \nOnly to prevent accidents.",
 	"wolfhud_equipment_keycard_doors_disabled_title" : "Key-card Door Suppression",
 	"wolfhud_equipment_keycard_doors_disabled_desc" : "When checked, you need to doubletap to close doors in hoxton breakout day 2. \nOnly to prevent accidents.",
+	"wolfhud_override_fedinv" : "Enable Federal Inventory",
+	"wolfhud_override_fedinv_desc" : "Enable colorized Inventory icons.\nRequires game restart to fully take effect.",
 
 	"wolfhud_gadget_options_name" : "무기 가젯 옵션",
 	"wolfhud_gadget_options_help" : "무기 가젯을 사용자에 맞게 설정합니다.",

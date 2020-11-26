@@ -5,12 +5,17 @@ if RequiredScript == "lib/managers/hudmanager" then
 	function HUDManager:add_waypoint(id, data, ...)
 		add_waypoint_original(self, id, data, ...)
 
-		local wp = self._hud.waypoints[id]
-		if wp and wp.bitmap and wp.distance and wp.arrow and data.distance then
-			local color = WolfHUD:getColorSetting({"CustomWaypoints", "WAYPOINTS_COLOR"}, "white")
-			wp.bitmap:set_color(color)
-			wp.distance:set_color(color)
-			wp.arrow:set_color(color:with_alpha(0.75))
+		local enable_waypoints_color = WolfHUD:getSetting({"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"})
+		local waypoints_available = id and self._hud and self._hud.waypoints and self._hud.waypoints[id]
+
+		if waypoints_available and enable_waypoints_color then
+			local wp = self._hud.waypoints[id]
+			if wp and wp.bitmap and wp.distance and wp.arrow and data.distance then
+				local color = WolfHUD:getColorSetting({"CustomWaypoints", "WAYPOINTS_COLOR"}, "white")
+				wp.bitmap:set_color(color)
+				wp.distance:set_color(color)
+				wp.arrow:set_color(color:with_alpha(0.75))
+			end
 		end
 	end
 
@@ -366,7 +371,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 					self:custom_waypoint_ecm_clbk("set_upgrade_level", key, data)
 				end
 			else
-				managers.waypoints:remove_waypoint(id, "jammer_time", "show", false)
+				managers.waypoints:remove_waypoint(id)
 			end
 		elseif managers.waypoints:get_waypoint(id) then
 			if event == "set_jammer_battery" then
@@ -511,6 +516,8 @@ if RequiredScript == "lib/managers/hudmanager" then
 
 		if event == "add" then
 			local unit_tweak = data.unit:base() and data.unit:base()._tweak_table
+			local enable_joker_floating_info = WolfHUD:getSetting({"CustomHUD", "ENABLE_JOKER_FLOATING_INFO"}, true)
+
 			local params = {
 				unit = data.unit,
 				offset = Vector3(0, 0, 30),
@@ -518,7 +525,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 				scale = 1.25,
 				health_bar = {
 					type = "icon",
-					show = true,
+					show = enable_joker_floating_info,
 					scale = 1.65,
 					texture = "guis/textures/pd2/hud_health",
 					--texture_rect = {0, 0, 64, 64},
@@ -527,7 +534,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 				},
 				health_shield = {
 					type = "icon",
-					show = true,
+					show = enable_joker_floating_info,
 					scale = 1.65,
 					texture = "guis/textures/pd2/hud_shield",
 					--texture_rect = {0, 0, 64, 64},
@@ -536,14 +543,14 @@ if RequiredScript == "lib/managers/hudmanager" then
 				},
 				health_bg = {
 					type = "icon",
-					show = true,
+					show = enable_joker_floating_info,
 					scale = 1.65,
 					texture = "guis/textures/pd2/hud_radialbg",
 					--texture_rect = {0, 0, 64, 64},
 				},
 				health_dmg = {
 					type = "icon",
-					show = true,
+					show = enable_joker_floating_info,
 					scale = 1.65,
 					texture = "guis/textures/pd2/hud_radial_rim",
 					--texture_rect = {0, 0, 64, 64},
@@ -552,12 +559,12 @@ if RequiredScript == "lib/managers/hudmanager" then
 				},
 				name = {
 					type = "label",
-					show = true,
+					show = enable_joker_floating_info,
 					text = WolfHUD:getCharacterName(unit_tweak, true)
 				},
 				kills = {
 					type = "label",
-					show = true,
+					show = enable_joker_floating_info,
 					text = string.format("%s %d", utf8.char(57364), data.kills or 0),
 					color = Color.white,
 					alpha = 0.8,

@@ -68,6 +68,8 @@
 	"bm_w_desertfox"			: "Desert Tech SRSA1",
 	"bm_w_tti"					: "KAC SR-25",
 	"bm_w_siltstone"			: "SVD Dragunov",
+	"bm_w_sbl"					: "Marlin Model 1895",
+	"bm_w_r700"					: "Remington Model 700P",
 
 	"bm_w_rpk" 					: "Izhmash RPK",
 	"bm_w_m249" 				: "FN M249 Para",
@@ -98,6 +100,11 @@
 	"bm_w_breech" 				: "Luger P08",
 	"bm_w_shrew" 				: "M1911 Colt Defender",
 	"bm_w_legacy" 				: "H&K P7M13",
+	"bm_w_beer"					: "Beretta 93R",
+	"bm_w_czech"				: "CZ AccuShadow 2",
+	"bm_w_stech"				: "Stechkin Automatic Pistol",
+	"bm_w_holt"					: "Hudson H9",
+	"bm_w_model3"				: "S&W No. 3 Russian Model",
 
 	"bm_w_m1928" 				: "Thompson M1928A1",
 	"bm_w_mac10" 				: "Ingram MAC-10",
@@ -128,7 +135,8 @@
 	"bm_w_striker" 				: "Sentinel Armsel Striker",
 	"bm_w_m37" 					: "Ithaca 37",
 	"bm_w_basset" 				: "CBRPS Saiga Spike X1S",
-	"bm_w_coach" 				: "Remington Exposed Hammer SxS ",
+	"bm_w_coach" 				: "Remington Exposed Hammer SxS",
+	"bm_w_m1897" 				: "Winchester Model 1897",
 
 	"bm_w_rpg7" 				: "RPG-7",
 	"bm_w_hunter" 				: "Avalanche Pistol Crossbow",
@@ -136,6 +144,7 @@
 	"bm_w_arbiter" 				: "H&K XM-25",
 	"bm_w_ray" 					: "M202 FLASH",
 	"bm_w_slap" 				: "H&K M320",
+
 	"bm_w_x_coal" 				: "Akimbo PP-19 Bizon",
 	"bm_w_x_uzi" 				: "Akimbo IMI Uzi",
 	"bm_w_x_sterling" 			: "Akimbo Sterling L2A1",
@@ -166,5 +175,9 @@
 	"bm_w_x_sparrow" 			: "Akimbo Jericho 941 RPL",
 	"bm_w_x_erma" 				: "Akimbo MP40",
 	"bm_w_x_shepheard" 			: "Akimbo SIG-Sauer MPX",
-	"bm_w_x_pl14" 				: "Akimbo PL-14 Lebedev"
+	"bm_w_x_pl14" 				: "Akimbo PL-14 Lebedev",
+	"bm_w_x_beer"				: "Akimbo Beretta 93R",
+	"bm_w_x_czech"				: "Akimbo CZ AccuShadow 2",
+	"bm_w_x_stech"				: "Akimbo Stechkin Automatic Pistol"
+	"bm_w_x_model3"				: "Akimbo S&W No. 3 Russian Model",
 }

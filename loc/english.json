@@ -1,6 +1,6 @@
 {
 	"menu_jowi" : "Wick",
-	"hud_int_hold_grab_the_bag" : "Hold $BTN_INTERACT to grab the $BAG",
+	"hud_int_hold_grab_the_bag" : "Hold $INTERACT to grab the $BAG",
 
 	"wolfhud_dialog_force_start_title" : "Force start game?",
 	"wolfhud_dialog_force_start_desc" : "Are you sure you want to force the game to start?\n\nPlease only use this for bugged lobbies, or if a player is afk.\nMake sure everyone had enough time to choose his loadout.\n\nThanks :)",
@@ -11,6 +11,11 @@
 	"wolfhud_dialog_rename_inv_tab" : "Rename Inventory Page",
 	"wolfhud_dialog_rename_inv_tab_desc" : "Please enter the new name for this Inventory page.",
 	"wolfhud_dialog_save" : "Save",
+	"wolfhud_dialog_requires_superblt_title" : "[WolfHUD] No SuperBLT detected!",
+	"wolfhud_dialog_requires_superblt_desc_long" : "WolfHUD requires SuperBLT in order to work.\nSuperBLT is a fork of the BLT mod-loading hook for PAYDAY 2, with a number of major improvements. \nIt is fully backwards-compatable with regular BLT mods.\n\nYou can find further information and installation instructions here: \n$URL",
+	"wolfhud_dialog_requires_superblt_desc_short" : "WolfHUD is no longer compatable with regular BLT.\nPlease update to SuperBLT to continue using it.\nYou can find SuperBLT at '$URL'.",
+	"wolfhud_dialog_update_install_folder_title" : "[WolfHUD] Auto-Updates compromised!",
+	"wolfhud_dialog_update_install_folder_desc" : "For automatic updates, WolfHUD's install folder \nneeds to be named 'mods/WolfHUD-master/'. \n(Currently its 'mods/$FOLDER/')",
 	"woldhud_notification_disabled_override_title" : "WolfHUD: $NAME is currently disabled.",
 	"woldhud_notification_disabled_override_desc" : "If you changed your mind, click here to get asked again.",
 	"woldhud_notification_restart_override_title" : "WolfHUD: $NAME is ready to install.",
@@ -104,6 +109,8 @@
 	"wolfhud_hudlist_loot_shoes" : "Shoes",
 	"wolfhud_hudlist_loot_toy" : "Toy",
 	"wolfhud_hudlist_loot_vr" : "Headset",
+	"wolfhud_hudlist_loot_egg" : "Egg",
+	"wolfhud_hudlist_loot_treasure" : "Treasure",
 	"wolfhud_hudlist_showcase" : "Showcase",
 
 	"wolfhud_hudlist_buff_basic" : "Basic",
@@ -128,12 +135,15 @@
 	"wolfhud_tabstats_melee_kills" : "Melee Kills:",
 	"wolfhud_tabstats_explosion_kills" : "Explosion Kills:",
 	"wolfhud_tabstats_nonspecial_kills" : "Non Special Kills:",
+	"wolfhud_tabstats_total_kills" : "Total Kills:",
 	"wolfhud_tabstats_total_revives" : "Total Revives (P/AI):",
 	"wolfhud_tabstats_alltime_stat" : "All Time:",
 
 	"wolfhud_enemy_civilian" : "Civilian",
+	"wolfhud_enemy_mariachi" : "Mariachi Band Member",
 	"wolfhud_enemy_gangster" : "Gangster",
 	"wolfhud_enemy_biker" : "Biker",
+	"wolfhud_enemy_bolivian_security_mex" : "Coyopa Security",
 	"wolfhud_enemy_bolivian_security" : "Sosa Security",
 	"wolfhud_enemy_bolivian_thug" : "Sosa Thug",
 	"wolfhud_enemy_mobster" : "Russian Mobster",
@@ -200,6 +210,9 @@
 	"wolfhud_enemy_spring" : "Captain Spring",
 	"wolfhud_enemy_fbi_vet" : "Veteran Cop",
 
+	"wolfhud_enemy_deathvox_light" : "ZEAL Unit",
+	"wolfhud_enemy_deathvox_heavy" : "Heavy ZEAL",
+
 	"wolfhud_multiselect_all" : "All",
 	"wolfhud_multiselect_none" : "None",
 	"wolfhud_multiselect_disabled" : "Disabled",
@@ -265,6 +278,8 @@
 	"wolfhud_inventory_names_desc" : "Show the names of your weapons, armor, deployables, etc. inside its box in the inventory.",
 	"wolfhud_skill_names_title" : "Show Skill Names",
 	"wolfhud_skill_names_desc" : "Always show the names of skills in the skilltree view.",
+	"wolfhud_show_contractor_job_heat_title":"Show Contractor Heat",
+	"wolfhud_show_contractor_job_heat_desc":"Shows job heat in the contract broker list.",
 	"wolfhud_show_mini_icons_title" : "Always show Mini-Icons",
 	"wolfhud_show_mini_icons_desc" : "Always show the mod icons of all weapons, not just the selected one.",
 	"wolfhud_no_slowmotion_title" : "No Slow Motion",
@@ -286,6 +301,10 @@
 	"wolfhud_pacified_civs_desc" : "Change the waypoint of untied civilians, while they are pacified.",
 	"wolfhud_use_realammo_title" : "Use Real Ammo",
 	"wolfhud_use_realammo_desc" : "Shows ammo left, not taking the rounds in your current magazine into account.",
+
+	"wolfhud_enable_joker_floating_title" : "Enable Joker Nameplates",
+	"wolfhud_enable_joker_floating_desc" : "Shows joker name and health above them.",
+
 	"wolfhud_enable_burstmode_title" : "Enable Burst mode",
 	"wolfhud_enable_burstmode_desc" : "Enable a burst fire mode for your weapons.",
 
@@ -470,6 +489,8 @@
 	"wolfhud_hudlist_progress_alpha_right_desc" : "Alpha value for the progress bars on right list items.",
 	"wolfhud_hudlist_progress_alpha_buff_title" : "Buff Progress Alpha",
 	"wolfhud_hudlist_progress_alpha_buff_desc" : "Alpha value for the progress bars on buff list items.",
+	"wolfhud_hudlist_timers_in_seconds_title" : "Timers in seconds",
+	"wolfhud_hudlist_timers_in_seconds_desc" : "Always display timers in seconds.",
 
 	"wolfhud_infopanels_left_options_name" : "Left List Options",
 	"wolfhud_infopanels_left_options_help" : "Options for the left info list.",
@@ -709,6 +730,8 @@
 	"wolfhud_waypoints_options_name" : "Custom Waypoints Options",
 	"wolfhud_waypoints_options_help" : "Options to control Custom Waypoints.",
 
+	"wolfhud_waypoints_color_enable_title" : "Allow Waypoint Coloring",
+	"wolfhud_waypoints_color_enable_desc" : "Allows Wolfhud to control mission waypoint colors",
 	"wolfhud_waypoints_color_title" : "Waypoints Color",
 	"wolfhud_waypoints_color_desc" : "The color of the default mission waypoints.",
 	"wolfhud_waypoints_show_ammo_bag_title" : "Show Ammo Bags",
@@ -892,6 +915,8 @@
 	"wolfhud_equipment_shaped_charge_disabled_stealth_desc" : "When checked, you need to doubletap to deploy shaped charges in stealth. \nOnly to prevent accidents.",
 	"wolfhud_equipment_keycard_doors_disabled_title" : "Key-card Door Suppression",
 	"wolfhud_equipment_keycard_doors_disabled_desc" : "When checked, you need to doubletap to close doors in hoxton breakout day 2. \nOnly to prevent accidents.",
+	"wolfhud_override_fedinv" : "Enable Federal Inventory",
+	"wolfhud_override_fedinv_desc" : "Enable colorized Inventory icons.\nRequires game restart to fully take effect.",
 
 	"wolfhud_gadget_options_name" : "Weapon Gadget Options",
 	"wolfhud_gadget_options_help" : "Specify your custom laser colors.",

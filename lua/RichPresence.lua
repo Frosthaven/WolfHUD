@@ -23,7 +23,9 @@ if RequiredScript == "lib/managers/platformmanager" then
 				else
 					-- Handle Steam RP Grouping
 					if not Global.game_settings.single_player then
-						group_key = managers.network.matchmake.lobby_handler:id()
+						if managers.network.matchmake and managers.network.matchmake.lobby_handler then
+							group_key = managers.network.matchmake.lobby_handler:id()
+						end
 
 						local session = managers.network:session()
 						group_count = tostring(session and #session:all_peers() or 1)
@@ -80,7 +82,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 			Steam:set_rich_presence("status", self:build_status_string(display, game_state, game_mode, game_heist, game_heistday, game_difficulty))
 		end
 	end
-	
+
 	local suffixList = {
 		"_prof$",
 		"_day$",
@@ -115,7 +117,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 
 		return level_id or self:get_current_job_id()
 	end
-	
+
 	function WinPlatformManager:build_status_string(display, state, mode, heist, day, difficulty)
 		local tokens = {
 			["#raw_status"] =				"{#State_%game:state%}",
@@ -125,8 +127,8 @@ if RequiredScript == "lib/managers/platformmanager" then
 			["#State_private"] =			"In a private lobby",
 			["#State_lobby_no_job"] =		"In a lobby",
 			["#State_lobby"] =				"Lobby: {#Mode_%game:mode%}",
-			["#State_playing"] =			"Playing:  {#Mode_%game:mode%}",
-			["#State_payday"] =				"Payday:  {#Mode_%game:mode%}",
+			["#State_playing"] =			"Playing: {#Mode_%game:mode%}",
+			["#State_payday"] =				"Payday: {#Mode_%game:mode%}",
 
 			-- Game modes
 			["#Mode_crime_spree"] =			"[CS] {#Level_%game:heist%} (Lvl. %game:difficulty%)",
@@ -140,7 +142,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 			["#Difficulty_hard"] =			"HARD",
 			["#Difficulty_overkill"] =		"VERY HARD",
 			["#Difficulty_overkill_145"] =	"OVERKILL",
-			["#Difficulty_easy_wish"] =		"MAYHAM",
+			["#Difficulty_easy_wish"] =		"MAYHEM",
 			["#Difficulty_overkill_290"] =	"DEATHWISH",
 			["#Difficulty_sm_wish"] =		"DEATH SENTENCE",
 
@@ -263,6 +265,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 			["#Level_help"] = 				"Prison Nightmare",
 			["#Job_big"] = 					"The Big Bank",
 			["#Level_big"] = 				"The Big Bank",
+			["#Level_big2"] = 				"The Big Bank",
 			["#Job_cane"] = 				"Santa's Workshop",
 			["#Level_cane"] = 				"Santa's Workshop",
 			["#Job_spa"] = 					"Brooklyn 10-10",
@@ -279,6 +282,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 			["#Level_pines"] = 				"White Xmas",
 			["#Job_kenaz"] = 				"Golden Grin Casino",
 			["#Level_kenaz"] = 				"Golden Grin Casino",
+			["#Level_cas"] = 				"Golden Grin Casino",
 			["#Job_shoutout_raid"] = 		"Meltdown",
 			["#Level_shoutout_raid"] = 		"Meltdown",
 			["#Job_mad"] = 					"Boiling Point",
@@ -316,6 +320,16 @@ if RequiredScript == "lib/managers/platformmanager" then
 			["#Level_nmh"] = 				"No Mercy Hospital",
 			["#Job_vit"] = 					"The White House",
 			["#Level_vit"] = 				"The White House",
+			["#Job_mex_cooking"] = 			"Border Crystals",
+			["#Level_mex_cooking"] = 		"Border Crystals",
+			["#Job_mex"] = 					"Border Crossing",
+			["#Level_mex"] = 				"Border Crossing",
+			["#Job_bex"] = 					"San Martín Bank",
+			["#Level_bex"] = 				"San Martín Bank",
+			["#Job_pex"] = 					"Breakfast in Tijuana",
+			["#Level_pex"] = 				"Breakfast in Tijuana",
+			["#Job_fex"] = 					"Buluc's Mansion",
+			["#Level_fex"] = 				"Buluc's Mansion",
 		}
 
 		local data = {
@@ -330,7 +344,10 @@ if RequiredScript == "lib/managers/platformmanager" then
 
 		local function populate_data(s, tokens, data, count)
 			count = count or 1
-			if count > 100 then WolfHUD:print_log("Infinite loop in RP update!", "error"); return s end
+			if count > 100 then
+				log("Infinite loop in RP update!", "error")
+				return s
+			end
 
 			if s:gmatch("%%(.+)%%") then
 				for k, v in pairs(data or {}) do
@@ -351,8 +368,8 @@ if RequiredScript == "lib/managers/platformmanager" then
 		end
 
 		s = populate_data(s, tokens, data)
-		log(string.format("Steam RP updated: %s", s))
-		return s 
+		--log(string.format("Steam RP updated: %s", s))
+		return s
 	end
 elseif RequiredScript == "lib/managers/skirmishmanager" then
 	local update_matchmake_attributes_original = SkirmishManager.update_matchmake_attributes

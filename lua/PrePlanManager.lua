@@ -634,12 +634,12 @@ elseif requiredScript == "lib/managers/preplanningmanager" then
 		if PrePlanningManager._SAVED_PLANS and PrePlanningManager._SAVED_PLANS[name] then
 			local saved_assets, saved_votes = PrePlanningManager._SAVED_PLANS[name].assets or {}, PrePlanningManager._SAVED_PLANS[name].votes or {}
 			for i, data in pairs(saved_votes) do
-				money_costs = money_costs + self:_get_type_cost(data.type)
+				money_costs = money_costs + self:get_type_cost(data.type)
 				favours = favours + self:get_type_budget_cost(data.type, 0)
 			end
 
 			for id, mission_element in pairs(saved_assets) do
-				money_costs = money_costs + self:_get_type_cost(mission_element.type)
+				money_costs = money_costs + self:get_type_cost(mission_element.type)
 				favours = favours + self:get_type_budget_cost(mission_element.type, 0)
 			end
 		end
@@ -668,6 +668,13 @@ elseif requiredScript == "lib/managers/preplanningmanager" then
 			managers.chat:feed_system_message(ChatManager.GAME, message)
 		elseif show_SP then
 			QuickMenu:new(managers.localization:text("wolfhud_preplanning_manager_title"), message, { text = managers.localization:text("dialog_ok"), is_cancel_button = true }, true)
+		end
+	end
+elseif requiredScript == "lib/managers/menu/preplanningmapgui" then
+	local set_map_position_to_item_original = PrePlanningMapGui.set_map_position_to_item
+	function PrePlanningMapGui:set_map_position_to_item(item, ...)
+		if item then
+			return set_map_position_to_item_original(self, item, ...)
 		end
 	end
 end
