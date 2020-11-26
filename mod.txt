@@ -11,16 +11,5 @@
 	"color" : "0 255 128",
 	"pre_hooks" : [
 		{ "hook_id" : "lib/entry", "script_path" : "Core.lua" }
-	],
-	"updates" : [
-		{
-			"identifier" : "fed_inv",
-			"host" : {
-				"meta" : "https://github.com/Kamikaze94/WolfHUD/raw/autoupdate/meta.json"
-			},
-			"install_dir" : "assets/mod_overrides/",
-			"install_folder" : "Federal Inventory",
-			"display_name" : "Federal Inventory"
-		}
 	]
 }
