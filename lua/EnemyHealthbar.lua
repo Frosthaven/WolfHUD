@@ -230,10 +230,12 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 				end
 			end
 
-			if not visible and self._last_unit and alive( self._last_unit ) then
+			if not visible and self._last_unit and alive( self._last_unit ) and self._last_unit:character_damage() then
 				health = self._last_unit:character_damage()._health * 10 or 0
-				max_health = self._last_unit:character_damage()._HEALTH_INIT * 10 or 0
-				name_id = self._last_unit:base()._tweak_table or "ENEMY"
+				--max_health = self._last_unit:character_damage()._HEALTH_INIT * 10 or 0
+				--name_id = self._last_unit:base()._tweak_table or "ENEMY"
+				max_health = (self._last_unit:character_damage()._HEALTH_INIT or 0) * 10
+				name_id = self._last_unit:base() and self._last_unit:base()._tweak_table or "ENEMY"
 
 				if name_id == "robbers_safehouse" and self._last_unit:interaction() then
 					name_id = CriminalsManager.convert_new_to_old_character_workname(self._last_unit:interaction().character or name_id)

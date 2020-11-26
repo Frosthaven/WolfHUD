@@ -6486,6 +6486,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	function HUDList.TotalDodgeChanceBuff:_update_value()
 		local value = 0
 
+		self._member_buffs["base_dodge"] = { value = (tweak_data.player.damage.DODGE_INIT or 0) + managers.player:body_armor_value("dodge") }
+
 		for id, data in pairs(self._member_buffs) do
 			local clbk = self._buff_effects[id]
 			value = value + (data.value and (clbk and  clbk(data.value) or data.value) or 0)
