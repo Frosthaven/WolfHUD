@@ -41,7 +41,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	local function get_icon_data(icon)
 		local texture = icon.texture
 		local texture_rect = icon.texture_rect
-
 		if icon.skills then
 			texture = "guis/textures/pd2/skilltree/icons_atlas"
 			local x, y = unpack(icon.skills)
@@ -72,8 +71,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		elseif icon.waypoints then
 			texture = "guis/textures/pd2/pd2_waypoints"
 			texture_rect = icon.waypoints
+		elseif icon.pager then
+			texture = "guis/textures/Wolfhud/pager"
+			texture_rect = { 0, 0, 80, 80 }
 		end
-
 		return texture, texture_rect
 	end
 
@@ -695,7 +696,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		--Pagers
 		local pager_list = list:register_item("pagers", HUDList.HorizontalList, { align = "top", w = list_width, h = 40 * scale, left_to_right = true, item_margin = 5, priority = 2, recheck_interval = 1 })
 		pager_list:set_static_item(HUDList.LeftListIcon, 1, 1, {
-			{ perks = {1, 4}, color = HUDListManager.ListOptions.list_color },
+			{ pager = true, color = HUDListManager.ListOptions.list_color },
 		})
 
 		--ECMs
@@ -795,6 +796,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDListManager:_whisper_mode_change(event, key, status)
+		if HUDListManager.ListOptions.aggregate_enemies then
+			self:_set_aggregate_enemies(true)
+		end
 		--[[
 		for _, item in pairs(self:list("right_side_list"):item("stealth_list"):items()) do
 			item:set_active(item:get_count() > 0 and status)
@@ -868,6 +872,26 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		else
 			list:unregister_item(id, true)
 		end
+	end
+
+	function HUDListManager:_update_unit_count_aggregated_stealth(list, all_types)
+		local non_security_ids = {}
+
+		--split security category from enemies category
+		for unit_type, unit_ids in pairs(all_types) do
+			if unit_type == "security" then
+				--update security counter
+				self:_update_unit_count_list_items(list, "security", unit_ids, HUDListManager.ListOptions.show_enemies)
+			else
+				--save non security entries 
+				for i=1,#unit_ids do
+					non_security_ids[#non_security_ids+1] = unit_ids[i]
+				end
+			end
+		end
+
+		--update enemies with non-security entries
+		self:_update_unit_count_list_items(list, "enemies", non_security_ids, HUDListManager.ListOptions.show_enemies)
 	end
 
 	function HUDListManager:_update_deployable_list_items(type, enabled)
@@ -1481,7 +1505,11 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		local all_types, all_ids = self:_get_units_by_category("enemies")
 
 		if HUDListManager.ListOptions.aggregate_enemies then
-			self:_update_unit_count_list_items(list, "enemies", all_ids, HUDListManager.ListOptions.show_enemies)
+			if managers.groupai:state():whisper_mode() then
+				self:_update_unit_count_aggregated_stealth(list, all_types)
+			else
+				self:_update_unit_count_list_items(list, "enemies", all_ids, HUDListManager.ListOptions.show_enemies)
+			end
 		else
 			for unit_type, unit_ids in pairs(all_types) do
 				self:_update_unit_count_list_items(list, unit_type, unit_ids, HUDListManager.ListOptions.show_enemies)
@@ -1489,13 +1517,20 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		end
 	end
 
-	function HUDListManager:_set_aggregate_enemies()
+	function HUDListManager:_set_aggregate_enemies(instantUpdate)
 		local list = self:list("right_side_list"):item("unit_count_list")
 		local all_types, all_ids = self:_get_units_by_category("enemies")
+		local instantUpdate = instantUpdate or false
 		all_types.enemies = {}
 
 		for unit_type, unit_ids in pairs(all_types) do
-			list:unregister_item(unit_type)
+			if (managers.groupai:state():whisper_mode()) then
+				if (unit_type ~= "security") then
+					list:unregister_item(unit_type, instantUpdate)
+				end
+			else
+				list:unregister_item(unit_type, instantUpdate)
+			end
 		end
 
 		self:_set_show_enemies()
@@ -1562,9 +1597,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDListManager:_set_show_pager_count()
 		local list = self:list("right_side_list"):item("stealth_list")
-
 		if HUDListManager.ListOptions.show_pager_count then
-			list:register_item("PagerCount", HUDList.UsedPagersItem, { perks = {1, 4} }, { priority = 1 })
+			list:register_item("PagerCount", HUDList.UsedPagersItem, { pager = true }, { priority = 1 })
 		else
 			list:unregister_item("PagerCount", true)
 		end
@@ -2556,7 +2590,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDList.ExpansionIndicator:init(parent, name, ratio_w, ratio_h, params)
 		HUDList.ExpansionIndicator.super.init(self, parent, name, { align = "center", w = parent:panel():h() * (ratio_w or 1), h = parent:panel():h() * (ratio_h or 1) })
-
 		local icon = params.icon or {}
 		self._icon = self._panel:bitmap({
 			name = "icon_expansion",

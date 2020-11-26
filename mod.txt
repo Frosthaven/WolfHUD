@@ -12,6 +12,9 @@
 	"pre_hooks" : [
 		{ "hook_id" : "lib/entry", "script_path" : "Core.lua" }
 	],
+	"hooks" : [
+		{ "hook_id" : "lib/managers/group_ai_states/groupaistatebase", 			"script_path" : "lua/BetterSuspicionIcons.lua" },
+	],
 	"updates" : [
 		{
 			"identifier" : "wolfhud",

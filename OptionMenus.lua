@@ -1296,10 +1296,10 @@ if WolfHUD then
 							},
 							{
 								type = "toggle",
-								name_id = "wolfhud_pacified_civs_title",
-								desc_id = "wolfhud_pacified_civs_desc",
+								name_id = "wolfhud_better_suspicion_icons_title",
+								desc_id = "wolfhud_better_suspicion_icons_desc",
 								visible_reqs = {}, enabled_reqs = {},
-								value = {"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS"},
+								value = {"HUDSuspicion", "SHOW_BETTER_SUSPICION_ICONS"},
 							},
 							{
 								type = "toggle",
